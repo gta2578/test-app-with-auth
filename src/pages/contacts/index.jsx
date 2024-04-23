@@ -1,10 +1,10 @@
 import React from "react";
 
-function Users() {
+function Contacts() {
 
   return (
-    <h2>This is a Users page</h2>
+    <h2>This is a Contacts page</h2>
   )
 }
 
-export default Users;
+export default Contacts;

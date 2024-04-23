@@ -1,10 +1,10 @@
 import React from "react";
 
-function Posts() {
+function ListOfOrders() {
 
   return (
-    <h2>This is Post page</h2>
+    <h2>This is List of Orders page</h2>
   )
 }
 
-export default Posts;
+export default ListOfOrders;

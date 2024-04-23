@@ -1,40 +1,25 @@
 import React, { useState } from "react";
-import { Link, Redirect } from "react-router-dom";
-import axios from "axios";
-import { useAuth } from "../../context/auth";
+import { Link, Navigate } from "react-router-dom";
+import { useAuth } from "../context/auth";
 
-import "./style.sass";
+import "./style.scss";
+import GoogleAuth from "../googleAuth/googleAuth";
+
 
 function Login() {
-  const [isLoggedIn, setLoggedIn] = useState(false);
-  const [isError, setIsError] = useState(false);
-  const [userName, setUserName] = useState("@gmail.com");
+  const [userName, setUserName] = useState("");
   const [password, setPassword] = useState("");
-  const { setAuthTokens } = useAuth();
+  const { setAuthTokens, setLoggedIn, setIsError, isLoggedIn, isError } = useAuth();
 
   function postLogin(e) {
     e.preventDefault();
-
-    axios
-      .post("http://localhost:3001/api/v1/auth", {
-        email: userName,
-        password: password,
-      })
-      .then((result) => {
-        if (result.status === 200) {
-          setAuthTokens(result.data);
-          setLoggedIn(true);
-        } else {
-          setIsError(true);
-        }
-      })
-      .catch((e) => {
-        setIsError(true);
-      });
+    setAuthTokens('2fhgfvce345bgbf909090wqeewertb6678');
+    setLoggedIn(true);
+    setIsError(false);
   }
 
   if (isLoggedIn) {
-    return <Redirect to="/" />;
+    return <Navigate to="/" exact='true'/>;
   }
 
   return (
@@ -62,7 +47,9 @@ function Login() {
         />
         <button className="buttonSignin">Sign In</button>
       </form>
-      <span>Don't have an account?</span><Link to="/signup">Sign up</Link>
+      <div className='linkWrapper'><span>Don't have an account?</span><Link to="/signup">Sign up</Link></div>
+      <div>---OR---</div>
+      <GoogleAuth setLoggedIn={setLoggedIn} setAuthTokens={setAuthTokens}  />
       {isError && <div>The username or password provided were incorrect!</div>}
     </div>
   );

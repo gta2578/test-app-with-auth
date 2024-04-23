@@ -12,7 +12,6 @@
     animation: App-logo-spin infinite 20s linear;
   }
 }
-
 .App-header {
   background-color: #282c34;
   min-height: 100vh;
@@ -36,3 +35,96 @@
     transform: rotate(360deg);
   }
 }
+body, ul {
+  padding: 0;
+  margin: 0;
+  background-color: white;
+}
+
+.App {
+  position: relative;
+}
+
+.appHeader {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  max-width: 90%;
+  height: 90px;
+  margin: 0 auto;
+  background-color: #f3f1f1;
+  box-shadow: 5px 5px 5px #7a7777;
+}
+.appHeader .logoutBtn {
+  padding: 10px 20px;
+  margin-right: 30px;
+  background: #5c5cc1;
+  border: none;
+  border-radius: 8px;
+  color: #FFFFFF;
+  cursor: pointer;
+}
+.appHeader .headerContainer {
+  width: 70%;
+}
+.appHeader .mainMenu {
+  display: flex;
+  justify-content: space-around;
+  list-style-type: none;
+  width: 100%;
+  font-size: 20px;
+  background-color: #f3f1f1;
+}
+.appHeader .mainMenu li a {
+  display: block;
+  text-decoration: none;
+  color: black;
+}
+.appHeader .mainMenu li a.active {
+  color: red;
+  text-decoration: underline;
+}
+.appHeader .mainMenu li a:hover {
+  color: blue;
+}
+.appHeader .linkBlock {
+  display: flex;
+}
+.appHeader .linkBlock .signup {
+  margin: 20px 0;
+  padding: 10px 20px;
+  height: 20px;
+  font-size: 18px;
+  color: white;
+  background-color: #3f4eae;
+  border-right: 1px solid grey;
+  border-radius: 5px 0px 0px 5px;
+  text-decoration: none;
+  box-shadow: 3px 3px 3px #7a7777;
+}
+.appHeader .linkBlock .signup.active {
+  color: white;
+  background-color: red;
+  text-decoration: none;
+  box-shadow: none;
+}
+.appHeader .linkBlock .signin {
+  margin: 20px 10px 20px 0;
+  padding: 10px 20px;
+  height: 20px;
+  font-size: 18px;
+  color: white;
+  background-color: #3f4eae;
+  border: none;
+  border-radius: 0px 5px 5px 0px;
+  text-decoration: none;
+  box-shadow: 3px 3px 3px #7a7777;
+}
+.appHeader .linkBlock .signin.active {
+  color: white;
+  background-color: red;
+  text-decoration: none;
+  box-shadow: none;
+}
+
+/*# sourceMappingURL=App.css.map */

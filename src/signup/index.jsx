@@ -1,37 +1,42 @@
 import React, {useState} from "react";
 import { Link } from 'react-router-dom';
 import axios from "axios";
-import './style.sass'
+
+import './style.scss'
+import {useAuth} from "../context/auth";
 
 
 function SignUp() {
 
-  const [userName, setUserName] = useState("@gmail.com");
+  const [userName, setUserName] = useState("");
   const [password, setPassword] = useState("");
   const [passwordAgain, setPasswordAgain] = useState("");
   const [isError, setIsError] = useState(false);
 
+  const { setAuthTokens, setLoggedIn } = useAuth();
+
   function postSignup(e) {
     e.preventDefault();
 
-    axios.post("http://localhost:3001/api/v1/users", {
+    password===passwordAgain ?
+
+    axios.post("https://jsonplaceholder.typicode.com/posts", {
       email: userName,
       password: password
     }).then(result => {
-      if (result.status === 200) {
-        setIsError(false);
-      } else {
-        setIsError(true);
-      }
+      setAuthTokens('2fhgfvce345bgbf909090wqeewertb6678');
+      setLoggedIn(true);
+      setIsError(false);
     }).catch(e => {
       setIsError(true);
     })
+    : <p>Registration error: check if the password was entered correctly</p>
   }
 
   return (
     <div className='card'>
       <form className='formSignup'
-            onSubmit={password===passwordAgain? postSignup:<p>Registration error: check if the password was entered correctly</p>}>
+            onSubmit={postSignup}>
         <input
           className='inputSignup'
           type="username"
@@ -63,7 +68,7 @@ function SignUp() {
         />
         <button className='buttonSignup'>Sign Up</button>
       </form>
-      <Link to="/signin">Already have an account?</Link>
+      <span>Already have an account?</span><Link to="/signin">Login</Link>
       { isError &&<p>Registration error: check the correctness of the login and password</p> }
 
     </div>
